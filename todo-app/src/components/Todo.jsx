@@ -24,10 +24,15 @@ const Todo = () => {
     if(todo==="") {
       return;
     } else {
+      
       setTodos([...todos, todo]);  //얘도 가능
-
     }
   }
+
+  const handleUpdateClick = () => {
+    
+  }
+
 
   return (
     <div>
