@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import Delete from './Delete';
 
 const Todo = () => {
 
@@ -6,7 +7,6 @@ const Todo = () => {
   //- 사용자가 등록한 업무를 보관할 배열 생성(state)
   const [todos, setTodos] = useState([]);
   const inputRef = useRef("");
-
 
   const addTodo = (e) => {
     e.preventDefault();
@@ -31,10 +31,13 @@ const Todo = () => {
           <input type="text" ref={inputRef}/>
           <input type="submit" value="등록" onClick={addTodo}/>
         </form>
+
       </div>
       <div>
         {todos&&todos.map((item, index) => (
-          <p key={index}>{index +1}.{item}</p>
+          <p key={index}>{index +1}.{item}
+          <Delete todos={todos} setTodos={setTodos} index={index}/>
+          </p>
         ))}
       </div>
     </div>
