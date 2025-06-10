@@ -1,9 +1,15 @@
 import React, { useRef, useState } from 'react'
+import TopMove from './TopMove';
+import BottomMove from './BottomMove';
+import CheckBox from './CheckBox';
+import Update from './Update';
+import Delete from './Delete';
 
 const Todo = () => {
 
   //Todo 
   //- 사용자가 등록한 업무를 보관할 배열 생성(state)
+  const [isEditing, setIsEditing] = useState(false);
   const [todos, setTodos] = useState([]);
   const inputRef = useRef("");
 
@@ -34,7 +40,19 @@ const Todo = () => {
       </div>
       <div>
         {todos&&todos.map((item, index) => (
-          <p key={index}>{index +1}.{item}</p>
+          <p key={index}>
+            {index +1}.
+            <CheckBox/>
+            {item}
+            <Delete todos={todos} setTodos={setTodos}/>
+            <Update data={{
+              todos: todos,
+              setTodos: setTodos,
+              index: index,
+            }}/>
+            <TopMove todos={todos} setTodos={setTodos} num={index}/>
+            <BottomMove todos={todos} setTodos={setTodos} num={index}/>
+            </p>
         ))}
       </div>
     </div>
