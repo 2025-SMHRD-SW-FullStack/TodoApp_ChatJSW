@@ -1,4 +1,6 @@
 import React, { useRef, useState } from 'react'
+import Update from './Update';
+
 
 const Todo = () => {
 
@@ -18,10 +20,15 @@ const Todo = () => {
     if(todo==="") {
       return;
     } else {
+      
       setTodos([...todos, todo]);  //얘도 가능
-
     }
   }
+
+  const handleUpdateClick = () => {
+    
+  }
+
 
   return (
     <div>
@@ -34,7 +41,14 @@ const Todo = () => {
       </div>
       <div>
         {todos&&todos.map((item, index) => (
-          <p key={index}>{index +1}.{item}</p>
+          <p key={index}>{index +1}.{item}
+          <Update              
+            data={{
+              todos: todos,
+              setTodos: setTodos,
+              index: index,
+            }}>
+          </Update></p>
         ))}
       </div>
     </div>
