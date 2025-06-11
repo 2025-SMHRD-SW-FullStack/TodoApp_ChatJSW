@@ -1,13 +1,20 @@
 import React, { useRef, useState } from 'react'
+<<<<<<< HEAD
+=======
+import TopMove from './TopMove';
+import BottomMove from './BottomMove';
 import CheckBox from './CheckBox';
+import Update from './Update';
+>>>>>>> 21019086e099172ee0f0c589c71527f8898abfa1
+import Delete from './Delete';
 
 const Todo = () => {
 
   //Todo 
   //- 사용자가 등록한 업무를 보관할 배열 생성(state)
+  const [isEditing, setIsEditing] = useState(false);
   const [todos, setTodos] = useState([]);
   const inputRef = useRef("");
-
 
   const addTodo = (e) => {
     e.preventDefault();
@@ -19,10 +26,15 @@ const Todo = () => {
     if(todo==="") {
       return;
     } else {
+      
       setTodos([...todos, todo]);  //얘도 가능
-
     }
   }
+
+  const handleUpdateClick = () => {
+    
+  }
+
 
   return (
     <div>
@@ -32,13 +44,24 @@ const Todo = () => {
           <input type="text" ref={inputRef}/>
           <input type="submit" value="등록" onClick={addTodo}/>
         </form>
+
       </div>
       <div>
-        {todos.map((item, index) => (
-  <p key={index}>
-    <CheckBox  item={item} />
-  </p>
-))}
+        {todos&&todos.map((item, index) => (
+          <p key={index}>
+            {index +1}.
+            <CheckBox/>
+            {item}
+            <Delete todos={todos} setTodos={setTodos} index={index}/>
+            <Update data={{
+              todos: todos,
+              setTodos: setTodos,
+              index: index,
+            }}/>
+            <TopMove todos={todos} setTodos={setTodos} num={index}/>
+            <BottomMove todos={todos} setTodos={setTodos} num={index}/>
+            </p>
+        ))}
       </div>
     </div>
     
