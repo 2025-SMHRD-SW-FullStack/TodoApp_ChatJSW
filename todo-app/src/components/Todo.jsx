@@ -1,11 +1,10 @@
 import React, { useRef, useState } from 'react'
-<<<<<<< HEAD
-=======
+
 import TopMove from './TopMove';
 import BottomMove from './BottomMove';
 import CheckBox from './CheckBox';
 import Update from './Update';
->>>>>>> 21019086e099172ee0f0c589c71527f8898abfa1
+
 import Delete from './Delete';
 
 const Todo = () => {
